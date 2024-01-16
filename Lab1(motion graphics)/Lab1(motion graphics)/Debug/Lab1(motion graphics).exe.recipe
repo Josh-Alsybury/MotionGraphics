@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+  <ProjectOutputs>
+    <ProjectOutput>
+      <FullPath>C:\Users\C00285802\source\repos\Lab1(motion graphics)\Debug\Lab1(motion graphics).exe</FullPath>
+    </ProjectOutput>
+  </ProjectOutputs>
+  <ContentFiles>
+    <ContentFile>
+      <FullPath>C:\Users\C00285802\source\repos\Lab1(motion graphics)\Lab1(motion graphics)\ASSETS\FONTS\ariblk.ttf</FullPath>
+    </ContentFile>
+    <ContentFile>
+      <FullPath>C:\Users\C00285802\source\repos\Lab1(motion graphics)\Lab1(motion graphics)\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
+    </ContentFile>
+  </ContentFiles>
+  <SatelliteDlls />
+  <NonRecipeFileRefs />
+</Project>
