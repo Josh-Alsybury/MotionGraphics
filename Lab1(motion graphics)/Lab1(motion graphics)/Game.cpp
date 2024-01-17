@@ -22,6 +22,7 @@ Game::Game() :
 {
 	Walls();
 	Player();
+	Enemy();
 }
 
 /// <summary>
@@ -117,6 +118,8 @@ void Game::render()
 	m_window.draw(m_stripe);
 	m_window.draw(m_stripe2);
 	m_window.draw(m_player);
+	m_window.draw(m_Enemy);
+
 
 	m_window.display();
 }
@@ -147,4 +150,15 @@ void Game::Player()
 	m_player.setRadius(25);
 }
 
+void Game::Enemy()
+{
+	m_Enemy.setFillColor(sf::Color::Red);
+	m_Enemy.setPosition(600, 370);
+	m_Enemy.setSize(sf::Vector2f(50, 50));
+}
 
+void Game::Move()
+{
+	Player.getPosition().y = playerPostion.y;
+
+}

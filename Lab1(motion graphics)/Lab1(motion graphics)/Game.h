@@ -30,6 +30,10 @@ private:
 
 	void Walls();
 	void Player();
+	void Enemy();
+	void Move();
+
+	sf::Vector2f playerPostion;
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::RectangleShape m_wall;
@@ -37,6 +41,8 @@ private:
 
 	sf::RectangleShape m_stripe;
 	sf::RectangleShape m_stripe2;
+
+	sf::RectangleShape m_Enemy;
 
 	sf::CircleShape m_player;
 
