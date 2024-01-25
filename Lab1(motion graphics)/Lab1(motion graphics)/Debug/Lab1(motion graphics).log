@@ -1,4 +1,6 @@
 ﻿  Game.cpp
-C:\Users\C00285802\Desktop\MotionGraphics\Lab1(motion graphics)\Lab1(motion graphics)\Game.cpp(138,31): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\C00285802\Desktop\MotionGraphics\Lab1(motion graphics)\Lab1(motion graphics)\Game.cpp(142,32): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\Lab1(motion graphics)\Lab1(motion graphics)\Game.cpp(150,31): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\Lab1(motion graphics)\Lab1(motion graphics)\Game.cpp(154,32): warning C4305: 'argument': truncation from 'double' to 'float'
+  main.cpp
+  Generating Code...
   Lab1(motion graphics).vcxproj -> C:\Users\C00285802\Desktop\MotionGraphics\Lab1(motion graphics)\Debug\Lab1(motion graphics).exe

@@ -23,6 +23,7 @@ Game::Game() :
 	Walls();
 	Player();
 	Enemy();
+	Move();
 }
 
 /// <summary>
@@ -92,6 +93,17 @@ void Game::processKeys(sf::Event t_event)
 	{
 		m_exitGame = true;
 	}
+	if (sf::Keyboard::Up == t_event.key.code)
+	{
+		if (direction == false)
+		{
+			direction = true;
+		}
+    	else if (direction == true)
+		{ 
+			direction = false;
+		}
+	}
 }
 
 /// <summary>
@@ -104,6 +116,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	Move();
 }
 
 /// <summary>
@@ -119,7 +132,6 @@ void Game::render()
 	m_window.draw(m_stripe2);
 	m_window.draw(m_player);
 	m_window.draw(m_Enemy);
-
 
 	m_window.display();
 }
@@ -146,19 +158,48 @@ void Game::Walls()
 void Game::Player()
 {
 	m_player.setFillColor(sf::Color::Yellow);
-	m_player.setPosition(50, 370);
-	m_player.setRadius(25);
+	m_player.setPosition(playerX, 370);
+	m_player.setSize(sf::Vector2f(50, 50));
 }
 
 void Game::Enemy()
 {
 	m_Enemy.setFillColor(sf::Color::Red);
-	m_Enemy.setPosition(600, 370);
+	m_Enemy.setPosition(enemyX, 370);
 	m_Enemy.setSize(sf::Vector2f(50, 50));
 }
 
 void Game::Move()
 {
-	Player.getPosition().y = playerPostion.y;
+	if (direction == false)
+	{
+		playerX = playerX + Velocity;
+		m_player.setPosition(playerX, 370);
+	}
+	if (direction == true)
+	{
+		playerX = playerX - Velocity;
+		m_player.setPosition(playerX, 370);
+	}
 
+	if(playerX < enemyX)
+	{
+		enemyX = enemyX - Velocity;
+		m_Enemy.setPosition(enemyX, 370);
+	}
+	if (playerX > enemyX)
+	{
+		enemyX = enemyX + Velocity;
+		m_Enemy.setPosition(enemyX, 370);
+	}
+
+
+	if (playerX > 801)
+	{
+		playerX = 10;
+	}
+	if (playerX < 5)
+	{
+		playerX = 800;
+	}
 }

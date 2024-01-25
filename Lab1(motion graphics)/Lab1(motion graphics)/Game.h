@@ -32,6 +32,17 @@ private:
 	void Player();
 	void Enemy();
 	void Move();
+	
+
+	float Speed = -1;
+
+	int Velocity = 2;
+
+	float playerX = 50;
+
+	float enemyX = 600;
+
+	bool direction = false;
 
 	sf::Vector2f playerPostion;
 
@@ -44,7 +55,7 @@ private:
 
 	sf::RectangleShape m_Enemy;
 
-	sf::CircleShape m_player;
+	sf::RectangleShape m_player;
 
 	bool m_exitGame; // control exiting game
 
