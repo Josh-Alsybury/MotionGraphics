@@ -1,0 +1,9 @@
+﻿  Game.cpp
+C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(169,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(169,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(185,11): warning C4552: '+': result of expression not used
+C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(188,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(188,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+  Generating Code...
+  Lab2.vcxproj -> C:\Users\C00285802\Desktop\MotionGraphics\Lab2\Lab2\Debug\Lab2.exe
