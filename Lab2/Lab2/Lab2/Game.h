@@ -35,13 +35,22 @@ private:
 	sf::RectangleShape m_player;
 	int Velocity = 20;
 	float playerX = 400;
+	float playerY = 500;
 	void Player();
 	void moveLeft();
 	void moveRight();
+
+	void bullet();
+	void fire();
+	sf::RectangleShape m_bullet;
+	bool firing = false;
+	float bulletY = playerY;
+	float bulletX = playerX;
+	float distance = 500;
+
 	void setupFontAndText();
 	void collision();
-
-	void setup();
+    void setup();
 
 	bool move = false;
 	bool endGame = false;

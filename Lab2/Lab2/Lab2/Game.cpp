@@ -20,6 +20,7 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
+	bullet();
 	setup();
 	setupFontAndText();
 }
@@ -104,6 +105,10 @@ void Game::processKeys(sf::Event t_event)
 	{
 		move = true;
 	}
+	if (sf::Keyboard::X == t_event.key.code)
+	{
+		firing = true;
+	}
 }
 
 /// <summary>
@@ -124,6 +129,7 @@ void Game::update(sf::Time t_deltaTime)
 		}
 	}
 	Player();
+	fire();
 	collision();
 }
 
@@ -138,16 +144,16 @@ void Game::render()
 	{
 		m_window.draw(walls[i]);
 	}
-
 	if(move == false)
 	{
 		m_window.draw(m_welcomeMessage);
 	}
-
 	if(endGame == true)
 	{
 		m_window.draw(m_endText);
 	}
+	
+	m_window.draw(m_bullet);
 
 	m_window.draw(m_player);
 
@@ -163,7 +169,7 @@ void Game::Player()
 
 void Game::moveLeft()
 {
-	if (endGame == false)
+	if (endGame == false && move == true)
 	{
 		playerX = playerX - Velocity;
 		m_player.setPosition(playerX, 500);
@@ -172,7 +178,7 @@ void Game::moveLeft()
 
 void Game::moveRight()
 {
-	if (endGame == false)
+	if (endGame == false && move == true)
 	{
 		playerX = playerX + Velocity;
 		m_player.setPosition(playerX, 500);
@@ -261,6 +267,26 @@ int levelData[] = {
 		 walls[i].setPosition(wallsX, wallsY);
 	 }
  }
+}
+
+void Game::bullet()
+{
+	m_bullet.setFillColor(sf::Color::Green);
+	m_bullet.setPosition(playerX, bulletY);
+	m_bullet.setSize(sf::Vector2f(10, 10));
+}
+
+void Game::fire()
+{
+	while (firing == true )
+	{
+		bulletY = bulletY - Velocity;
+	}
+	if (bulletY < distance)
+	{
+		firing = false;
+	}
+	m_bullet.setPosition(playerX, bulletY);
 }
 
 void Game::setupFontAndText()
