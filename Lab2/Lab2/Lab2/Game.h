@@ -38,15 +38,23 @@ private:
 	void Player();
 	void moveLeft();
 	void moveRight();
+	void setupFontAndText();
+	void collision();
 
 	void setup();
+
+	bool move = false;
+	bool endGame = false;
 	
-	static const int numWalls = 90;
+	static const int numWalls = 480;
 	sf::RectangleShape walls [numWalls];
 
 	int wallsX = 0;
-	int wallsY = 0;
+	int wallsY = -2300;
 
+	sf::Font m_ArialBlackfont; // font used by message
+	sf::Text m_welcomeMessage; // text used for message on screen
+	sf::Text m_endText;
 };
 
 #endif // !GAME_HPP
