@@ -109,6 +109,10 @@ void Game::processKeys(sf::Event t_event)
 	{
 		firing = true;
 	}
+	if (sf::Keyboard::R == t_event.key.code)
+	{
+		
+	}
 }
 
 /// <summary>
@@ -200,52 +204,52 @@ void Game::moveRight()
 void Game::setup()
 {
 int levelData[] = {
-1,1,1,1,1,0,1,1,0,1,
+1,1,1,1,1,3,1,1,0,1,
 1,1,1,1,0,0,0,0,0,1,
-1,1,1,1,0,0,0,0,1,1,
+1,1,1,1,0,0,2,0,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,0,2,0,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,0,3,0,1,1,1,
 1,1,1,1,0,0,1,1,1,1,
 1,1,1,0,2,0,1,1,1,1,
 1,1,0,0,0,0,0,1,1,1,
 
 1,1,1,1,0,1,0,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,0,2,0,1,1,1,
 1,1,1,1,1,0,0,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,2,1,1,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,3,0,0,1,1,1,
 1,1,1,1,0,0,1,1,1,1,
 1,1,1,0,0,2,1,1,1,1,
 1,1,0,0,0,0,0,1,1,1,
 
 1,1,0,0,0,0,1,1,1,1,
-1,1,1,0,0,0,0,1,1,1,
+1,1,1,0,2,3,0,1,1,1,
 1,1,1,0,0,1,1,1,1,1,
-1,1,1,1,0,0,1,1,1,1,
+1,1,1,1,2,0,1,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,1,0,1,1,1,1,
 1,1,1,1,1,2,1,1,1,1,
-1,1,1,0,0,0,1,1,1,1,
+1,1,1,0,0,3,1,1,1,1,
 1,1,0,1,2,0,1,1,1,1, 
 1,1,0,0,0,0,1,1,1,1,
 
-1,1,0,0,1,1,1,1,1,1,
+1,1,0,3,1,1,1,1,1,1,
 1,1,0,0,1,1,1,1,1,1,
 1,1,0,2,0,0,1,1,1,1,
-1,1,1,0,0,0,0,1,1,1,
+1,1,1,0,0,0,3,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
-1,1,1,1,0,1,0,1,1,1,
+1,1,1,1,3,1,0,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
 1,1,1,1,0,0,2,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,0,0,0,0,1,1, 
 
 1,1,1,1,1,2,0,0,1,1,
-1,1,1,1,1,0,1,0,1,1,
+1,1,1,1,1,3,1,0,1,1,
 1,1,1,1,1,0,0,0,1,1,
-1,1,1,1,1,1,0,1,1,1,
+1,1,1,1,1,1,3,1,1,1,
 1,1,1,1,1,1,0,1,1,1,
 1,1,1,1,2,0,2,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
@@ -258,6 +262,11 @@ int levelData[] = {
  {
 	 walls[i].setPosition(wallsX, wallsY);
 	 walls[i].setSize(sf::Vector2f(90,60));
+
+	 if (levelData[i] == 3)
+	 {
+		 walls[i].setFillColor(sf::Color::Yellow);
+	 }
 	 if (levelData[i] == 2)
 	 {
 		 walls[i].setFillColor(sf::Color::Magenta);
@@ -332,8 +341,8 @@ void Game::setupFontAndText()
 	m_winText.setFont(m_ArialBlackfont);
 	m_winText.setString("winner");
 	m_winText.setStyle(sf::Text::Bold);
-	m_winText.setPosition(160.0f, 40.0f);
-	m_winText.setCharacterSize(40U);
+	m_winText.setPosition(260.0f, 300.0f);
+	m_winText.setCharacterSize(70U);
 	m_winText.setOutlineColor(sf::Color::Green);
 	m_winText.setFillColor(sf::Color::Black);
 	m_winText.setOutlineThickness(3.0f);
@@ -354,14 +363,22 @@ void Game::collision()
 	{
 		if (walls[i].getGlobalBounds().intersects(m_player.getGlobalBounds()))
 		{
-			if (walls[i].getFillColor() ==sf::Color::Red)
+			if (walls[i].getFillColor() ==sf::Color::Red || walls[i].getFillColor() == sf::Color::Yellow)
 			{
 				endGame = true;
 			}
 		}
-		if (walls[i].getGlobalBounds().intersects(m_player.getGlobalBounds()))
+		if (walls[i].getGlobalBounds().intersects(m_player.getGlobalBounds())|| walls[i].getGlobalBounds().intersects(m_bullet.getGlobalBounds()))
 		{
 			if (walls[i].getFillColor() == sf::Color::Magenta)
+			{
+				score++;
+				walls[i].setPosition(-1000, -1000);
+			}
+		}
+		if (walls[i].getGlobalBounds().intersects(m_bullet.getGlobalBounds()))
+		{
+			if (walls[i].getFillColor() == sf::Color::Yellow)
 			{
 				score++;
 				walls[i].setPosition(-1000, -1000);

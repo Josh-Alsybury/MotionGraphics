@@ -1,6 +1,6 @@
 ﻿  Game.cpp
-C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(259,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(259,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(282,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(282,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(263,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(263,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(291,33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Lab2\Game.cpp(291,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Lab2.vcxproj -> C:\Users\joshb\Desktop\MotionGraphics\Lab2\Lab2\Debug\Lab2.exe
