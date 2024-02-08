@@ -46,7 +46,7 @@ private:
 	bool firing = false;
 	float bulletY = playerY;
 	float bulletX = playerX;
-	float distance = 500;
+	float distance = 400;
 
 	void setupFontAndText();
 	void collision();
@@ -54,6 +54,7 @@ private:
 
 	bool move = false;
 	bool endGame = false;
+	bool win = false;
 	
 	static const int numWalls = 480;
 	sf::RectangleShape walls [numWalls];
@@ -61,9 +62,13 @@ private:
 	int wallsX = 0;
 	int wallsY = -2300;
 
+	int score = 0;
+
 	sf::Font m_ArialBlackfont; // font used by message
 	sf::Text m_welcomeMessage; // text used for message on screen
 	sf::Text m_endText;
+    sf::Text m_winText;
+	sf::Text m_score;
 };
 
 #endif // !GAME_HPP

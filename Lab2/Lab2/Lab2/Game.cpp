@@ -121,13 +121,19 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	if (move == true && endGame == false)
+	if (move == true && endGame == false && win == false)
 	{
 		for (int i = 0; i < numWalls; i++)
 		{
 			walls[i].setPosition(walls[i].getPosition().x, walls[i].getPosition().y + 1);
 		}
 	}
+	if (walls[numWalls - 1].getPosition().y > 3600)
+	{
+		win = true;
+	}
+	m_score.setString("score :" + std::to_string(score));
+
 	Player();
 	fire();
 	collision();
@@ -152,6 +158,12 @@ void Game::render()
 	{
 		m_window.draw(m_endText);
 	}
+	if (win == true)
+	{
+		m_window.draw(m_winText);
+	}
+	
+	m_window.draw(m_score);
 	
 	m_window.draw(m_bullet);
 
@@ -169,7 +181,7 @@ void Game::Player()
 
 void Game::moveLeft()
 {
-	if (endGame == false && move == true)
+	if (endGame == false && win == false && move == true)
 	{
 		playerX = playerX - Velocity;
 		m_player.setPosition(playerX, 500);
@@ -178,7 +190,7 @@ void Game::moveLeft()
 
 void Game::moveRight()
 {
-	if (endGame == false && move == true)
+	if (endGame == false && win == false && move == true)
 	{
 		playerX = playerX + Velocity;
 		m_player.setPosition(playerX, 500);
@@ -188,24 +200,24 @@ void Game::moveRight()
 void Game::setup()
 {
 int levelData[] = {
-1,1,1,1,1,1,1,1,0,1,
+1,1,1,1,1,0,1,1,0,1,
 1,1,1,1,0,0,0,0,0,1,
 1,1,1,1,0,0,0,0,1,1,
 1,1,1,1,0,0,0,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,0,2,0,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,0,0,1,1,1,1,
-1,1,1,0,0,0,1,1,1,1,
+1,1,1,0,2,0,1,1,1,1,
 1,1,0,0,0,0,0,1,1,1,
 
 1,1,1,1,0,1,0,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,1,0,0,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
-1,1,1,1,0,1,1,1,1,1,
+1,1,1,1,2,1,1,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,0,0,1,1,1,1,
-1,1,1,0,0,0,1,1,1,1,
+1,1,1,0,0,2,1,1,1,1,
 1,1,0,0,0,0,0,1,1,1,
 
 1,1,0,0,0,0,1,1,1,1,
@@ -214,28 +226,28 @@ int levelData[] = {
 1,1,1,1,0,0,1,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,1,0,1,1,1,1,
-1,1,1,1,1,0,1,1,1,1,
+1,1,1,1,1,2,1,1,1,1,
 1,1,1,0,0,0,1,1,1,1,
-1,1,0,1,0,0,1,1,1,1, 
+1,1,0,1,2,0,1,1,1,1, 
 1,1,0,0,0,0,1,1,1,1,
 
 1,1,0,0,1,1,1,1,1,1,
 1,1,0,0,1,1,1,1,1,1,
-1,1,0,0,0,0,1,1,1,1,
+1,1,0,2,0,0,1,1,1,1,
 1,1,1,0,0,0,0,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,0,0,2,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 1,1,1,1,0,0,0,0,1,1, 
 
-1,1,1,1,1,0,0,0,1,1,
+1,1,1,1,1,2,0,0,1,1,
 1,1,1,1,1,0,1,0,1,1,
 1,1,1,1,1,0,0,0,1,1,
 1,1,1,1,1,1,0,1,1,1,
 1,1,1,1,1,1,0,1,1,1,
-1,1,1,1,0,0,0,1,1,1,
+1,1,1,1,2,0,2,1,1,1,
 1,1,1,1,0,1,0,1,1,1,
 1,1,1,1,0,0,0,1,1,1,
 0,0,0,0,0,0,0,0,1,1,
@@ -246,9 +258,12 @@ int levelData[] = {
  {
 	 walls[i].setPosition(wallsX, wallsY);
 	 walls[i].setSize(sf::Vector2f(90,60));
-
-
-
+	 if (levelData[i] == 2)
+	 {
+		 walls[i].setFillColor(sf::Color::Magenta);
+		 walls[i].setSize(sf::Vector2f(20, 20));
+		 walls[i].setOrigin(-30, -30);
+	 }
 	 if(levelData[i] == 1)
 	 { 
 		 walls[i].setFillColor(sf::Color::Red); 
@@ -278,13 +293,14 @@ void Game::bullet()
 
 void Game::fire()
 {
-	while (firing == true )
+	if (firing == true )
 	{
 		bulletY = bulletY - Velocity;
 	}
 	if (bulletY < distance)
 	{
 		firing = false;
+		bulletY = playerY;
 	}
 	m_bullet.setPosition(playerX, bulletY);
 }
@@ -304,18 +320,32 @@ void Game::setupFontAndText()
 	m_welcomeMessage.setFillColor(sf::Color::Black);
 	m_welcomeMessage.setOutlineThickness(3.0f);
 
-	if (!m_ArialBlackfont.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
-	{
-		std::cout << "problem loading arial black font" << std::endl;
-	}
 	m_endText.setFont(m_ArialBlackfont);
-	m_endText.setString("YOU LOSE :3");
+	m_endText.setString("YOU LOSE");
 	m_endText.setStyle(sf::Text::Bold);
 	m_endText.setPosition(160.0f, 40.0f);
 	m_endText.setCharacterSize(40U);
 	m_endText.setOutlineColor(sf::Color::Green);
 	m_endText.setFillColor(sf::Color::Black);
 	m_endText.setOutlineThickness(3.0f);
+
+	m_winText.setFont(m_ArialBlackfont);
+	m_winText.setString("winner");
+	m_winText.setStyle(sf::Text::Bold);
+	m_winText.setPosition(160.0f, 40.0f);
+	m_winText.setCharacterSize(40U);
+	m_winText.setOutlineColor(sf::Color::Green);
+	m_winText.setFillColor(sf::Color::Black);
+	m_winText.setOutlineThickness(3.0f);
+
+	m_score.setFont(m_ArialBlackfont);
+	m_score.setString("score :" + std::to_string(score));
+	m_score.setStyle(sf::Text::Bold);
+	m_score.setPosition(10.0f, 10.0f);
+	m_score.setCharacterSize(20U);
+	m_score.setOutlineColor(sf::Color::Green);
+	m_score.setFillColor(sf::Color::Black);
+	m_score.setOutlineThickness(3.0f);
 }
 
 void Game::collision()
@@ -327,6 +357,14 @@ void Game::collision()
 			if (walls[i].getFillColor() ==sf::Color::Red)
 			{
 				endGame = true;
+			}
+		}
+		if (walls[i].getGlobalBounds().intersects(m_player.getGlobalBounds()))
+		{
+			if (walls[i].getFillColor() == sf::Color::Magenta)
+			{
+				score++;
+				walls[i].setPosition(-1000, -1000);
 			}
 		}
 	}
