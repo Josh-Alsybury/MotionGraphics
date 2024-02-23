@@ -1,0 +1,12 @@
+﻿  Game.cpp
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.h(29,46): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(114,34): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(122,22): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(130,17): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(258,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(258,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(265,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(265,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(271,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\One Button Platformer\Game.cpp(271,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  One Button Platformer.vcxproj -> C:\Users\joshb\Desktop\MotionGraphics\Lab3\One Button Platformer\Debug\One Button Platformer.exe
