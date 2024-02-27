@@ -48,7 +48,7 @@ public:
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
+	{ 0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,1,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },	
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
 
@@ -62,13 +62,13 @@ public:
 	{ 0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 1,1,1,1,1,1,1,1,0,4,0,1,0,0,0,0,0,0,0,2 },
-	{ 1,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,2 },
+	{ 0,1,1,1,1,1,1,1,2,0,0,1,0,0,0,0,0,0,0,2 },
+	{ 0,1,1,1,1,1,1,1,2,0,0,1,0,0,0,0,0,0,0,2 },
 
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,2 },
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2 },
-	{ 1,1,0,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1 },
+	{ 1,1,4,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,2 },
@@ -88,14 +88,15 @@ public:
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,2 },
 	{ 0,0,1,1,0,3,3,0,0,0,0,0,0,0,5,0,0,0,0,2 },
-	{ 0,0,6,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,0,6,0,0,0,0,0,0,3,3,1,0,0,0,0,0,0,0,2 } 
+	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
+	{ 0,0,0,0,0,0,0,0,0,3,3,1,0,0,0,0,0,0,0,2 } 
 	};
 
 	sf::RectangleShape level[numRows][numCols];
 
 	bool move = true;
 	bool Death = false;
+	bool key = false;
 
 	Game()
 	{
@@ -103,6 +104,7 @@ public:
 	}
 	void init()
 	{
+		key = false;
 
 		view = window.getDefaultView();
 		playerShape.setSize(sf::Vector2f(20, 20));
@@ -146,7 +148,6 @@ public:
 				{
 					level[row][col].setSize(sf::Vector2f(70, 100));
 					level[row][col].setPosition(row * 70, col * 30);
-
 					level[row][col].setFillColor(sf::Color::Yellow);
 				}
 				if (levelData[row][col] == 5)
@@ -158,7 +159,7 @@ public:
 				}
 				if (levelData[row][col] == 6)
 				{
-					level[row][col].setSize(sf::Vector2f(70, 100));
+					level[row][col].setSize(sf::Vector2f(40, 40));
 					level[row][col].setPosition(row * 70, col * 30);
 
 					level[row][col].setFillColor(sf::Color::Cyan);
@@ -275,10 +276,13 @@ public:
 							}
 							if (levelData[row][col] == 4) 
 							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
+								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key == true)
 								{
-									level[row][col].move(0, -10);
-									
+									level[row][col].setPosition(1000, 1000);
+								}
+								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key == false)
+								{
+									init();
 								}
 							}
 							if (levelData[row][col] == 5)
@@ -292,7 +296,8 @@ public:
 							{
 								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
 								{
-									
+									key = true;
+									level[row][col].setPosition(1000, 1000);
 								}
 							}
 						}
