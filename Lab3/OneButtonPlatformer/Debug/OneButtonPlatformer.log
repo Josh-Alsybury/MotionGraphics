@@ -1,21 +1,30 @@
 ﻿  main.cpp
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(110,22): warning C4129: 'I': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(113,22): warning C4129: 'I': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(113,22): warning C4129: 's': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(116,20): warning C4129: 'I': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(116,20): warning C4129: 'k': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(119,21): warning C4129: 'I': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(119,21): warning C4129: 'd': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(122,21): warning C4129: 'I': unrecognized character escape sequence
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(122,21): warning C4129: 'j': unrecognized character escape sequence
 C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(33,46): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(122,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(122,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(129,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(129,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(135,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(135,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(143,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(143,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(150,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(150,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(156,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(156,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(163,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(163,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(210,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(218,1): warning C4305: '=': truncation from 'double' to 'float'
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(225,1): warning C4305: '=': truncation from 'double' to 'float'
-C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(292,1): warning C4305: '=': truncation from 'double' to 'float'
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(137,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(137,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(145,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(145,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(151,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(151,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(159,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(159,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(166,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(166,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(173,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(173,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(180,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(180,38): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(227,1): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(235,1): warning C4305: '=': truncation from 'double' to 'float'
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(242,1): warning C4305: '=': truncation from 'double' to 'float'
+C:\MotionGraphics\Lab3\OneButtonPlatformer\main.cpp(309,1): warning C4305: '=': truncation from 'double' to 'float'
   OneButtonPlatformer.vcxproj -> C:\MotionGraphics\Lab3\OneButtonPlatformer\Debug\OneButtonPlatformer.exe
