@@ -32,8 +32,11 @@ public:
 
 	float velocityX = 0, velocityY = 0, gravity = 0.3;
 
-
-
+	sf::Texture floor;
+	sf::Texture spike;
+	sf::Texture key;
+	sf::Texture door;
+	sf::Texture jump;
 
 	static const int numRows = 48;
 	static const int numCols = 20;
@@ -95,7 +98,7 @@ public:
 	sf::RectangleShape level[numRows][numCols];
 
 	bool move = true;
-	bool key = false;
+	bool key1 = false;
 
 	Game()
 	{
@@ -103,23 +106,23 @@ public:
 	}
 	void init()
 	{
-		key = false;
+		key1 = false;
 		move = true;
 		
-		sf::Texture floor;
-		floor.loadFromFile("ASSETS\IMAGES\floor.png");
 
-		sf::Texture spike;
-		spike.loadFromFile("ASSETS\IMAGES\spike.png");
+		floor.loadFromFile("ASSETS\\IMAGES\\floor.png");
 
-		sf::Texture key;
-		key.loadFromFile("ASSETS\IMAGES\key.png");
+		
+		spike.loadFromFile("ASSETS\\IMAGES\\spike.png");
 
-		sf::Texture door ;
-		door.loadFromFile("ASSETS\IMAGES\door.png");
+		
+		key.loadFromFile("ASSETS\\IMAGES\\key.png");
 
-		sf::Texture jump;
-		jump.loadFromFile("ASSETS\IMAGES\jump.png");
+		
+		door.loadFromFile("ASSETS\\IMAGES\\door.png");
+
+		
+		jump.loadFromFile("ASSETS\\IMAGES\\jump.png");
 
 		view = window.getDefaultView();
 		playerShape.setSize(sf::Vector2f(20, 20));
@@ -143,7 +146,7 @@ public:
 
 					level[row][col].setSize(sf::Vector2f(70, 30));
 					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setFillColor(sf::Color::Black);
+					level[row][col].setFillColor(sf::Color(50,50,50));
 				}
 				if (levelData[row][col] == 2)
 				{
@@ -293,11 +296,11 @@ public:
 							}
 							if (levelData[row][col] == 4) 
 							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key == true)
+								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key1 == true)
 								{
 									level[row][col].setPosition(1000, 1000);
 								}
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key == false)
+								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key1 == false)
 								{
 									init();
 								}
@@ -313,7 +316,7 @@ public:
 							{
 								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
 								{
-									key = true;
+									key1 = true;
 									level[row][col].setPosition(1000, 1000);
 								}
 							}

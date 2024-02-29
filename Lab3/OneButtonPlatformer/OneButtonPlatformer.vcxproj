@@ -26,10 +26,11 @@
     <ClInclude Include="Game.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="ASSETS\IMAGES\SFML-LOGO.png">
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</DeploymentContent>
-      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</DeploymentContent>
-    </Image>
+    <Image Include="ASSETS\IMAGES\door.png" />
+    <Image Include="ASSETS\IMAGES\floor.png" />
+    <Image Include="ASSETS\IMAGES\jump.png" />
+    <Image Include="ASSETS\IMAGES\key.png" />
+    <Image Include="ASSETS\IMAGES\spike.png" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="ASSETS\FONTS\ariblk.ttf">

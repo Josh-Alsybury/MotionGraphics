@@ -1,1 +1,2 @@
 C:\MotionGraphics\Lab3\OneButtonPlatformer\Debug\OneButtonPlatformer.exe
+C:\Users\C00285802\Desktop\MotionGraphics\Lab3\OneButtonPlatformer\Debug\OneButtonPlatformer.exe
