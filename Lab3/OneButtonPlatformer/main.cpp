@@ -87,7 +87,7 @@ public:
 	{ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,2 },
-	{ 1,1,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
+	{ 1,1,4,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
 	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2 },
 	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,2 },
 	{ 0,0,1,1,0,3,3,0,0,0,0,0,0,0,5,0,0,0,0,2 },
@@ -111,17 +111,9 @@ public:
 		
 
 		floor.loadFromFile("ASSETS\\IMAGES\\floor.png");
-
-		
 		spike.loadFromFile("ASSETS\\IMAGES\\spike.png");
-
-		
 		key.loadFromFile("ASSETS\\IMAGES\\key.png");
-
-		
 		door.loadFromFile("ASSETS\\IMAGES\\door.png");
-
-		
 		jump.loadFromFile("ASSETS\\IMAGES\\jump.png");
 
 		view = window.getDefaultView();
@@ -138,7 +130,6 @@ public:
 
 					level[row][col].setSize(sf::Vector2f(70, 30));
 					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setFillColor(sf::Color::Red);
  					level[row][col].setTexture(&floor);
 				}
 				if (levelData[row][col] == 0)
@@ -153,7 +144,6 @@ public:
 					level[row][col].setSize(sf::Vector2f(70, 30));
 					level[row][col].setPosition(row * 70, col * 30);
 					level[row][col].setTexture(&spike);
-					level[row][col].setFillColor(sf::Color::Blue);
 
 				}
 				if (levelData[row][col] == 3)
@@ -161,28 +151,24 @@ public:
 					level[row][col].setSize(sf::Vector2f(70, 30));
 					level[row][col].setPosition(row * 70, col * 30);
 					level[row][col].setTexture(&door);
-					level[row][col].setFillColor(sf::Color::Green);
 				}
 				if (levelData[row][col] == 4)
 				{
 					level[row][col].setSize(sf::Vector2f(70, 100));
 					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&key);
-					level[row][col].setFillColor(sf::Color::Yellow);
+					level[row][col].setTexture(&door);
 				}
 				if (levelData[row][col] == 5)
 				{
 					level[row][col].setSize(sf::Vector2f(70, 100));
 					level[row][col].setPosition(row * 70, col * 30);
 					level[row][col].setTexture(&jump);
-					level[row][col].setFillColor(sf::Color::Magenta);
 				}
 				if (levelData[row][col] == 6)
 				{
 					level[row][col].setSize(sf::Vector2f(40, 40));
 					level[row][col].setPosition(row * 70, col * 30);
 					level[row][col].setTexture(&key);
-					level[row][col].setFillColor(sf::Color::Cyan);
 				}
 			}
 			std::cout << std::endl;
