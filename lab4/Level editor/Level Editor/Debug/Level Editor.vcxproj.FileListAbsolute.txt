@@ -1,0 +1,6 @@
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\Level Editor.exe
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\Level Editor.vcxproj.MdMergeInputs.cache
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\Level Editor.vcxproj.cppwinrt_plat.cache
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\Level Editor.vcxproj.cppwinrt_comp.cache
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\ASSETS\FONTS\ariblk.ttf
+C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Debug\ASSETS\IMAGES\SFML-LOGO.png
