@@ -1,9 +1,0 @@
-﻿  Game.cpp
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Game.cpp(26,9): error C2039: 'initialise': is not a member of 'Menu'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Menu.h(2,7): message : see declaration of 'Menu'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Game.cpp(27,16): error C2039: 'initalise': is not a member of 'LevelEditor'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\LevelEditor.h(2,7): message : see declaration of 'LevelEditor'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Game.cpp(28,13): error C2039: 'initialise': is not a member of 'GamePlay'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\Level editor\Level Editor\Gamplay.h(3,7): message : see declaration of 'GamePlay'
-  main.cpp
-  Generating Code...

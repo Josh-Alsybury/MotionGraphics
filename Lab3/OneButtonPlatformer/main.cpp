@@ -18,6 +18,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <time.h> 
+enum class GameState
+{
+	Menu,
+	Gameplay,
+	Editor
+};
+
+struct Button
+{
+	sf::Text text;
+	sf::RectangleShape rectangle;
+};
+
 class Game
 {
 public:
@@ -26,95 +39,96 @@ public:
 	sf::View view;
 	float randomNum;
 
+	sf::Font font;
 
 	sf::RectangleShape playerShape;
-	
+
+	Button buttons[3];
+
+	sf::CircleShape cursor;
+
+	GameState m_currentGamestate = GameState::Menu;
 
 	float velocityX = 0, velocityY = 0, gravity = 0.3;
 
-	sf::Texture floor;
-	sf::Texture spike;
-	sf::Texture key;
-	sf::Texture door;
-	sf::Texture jump;
-
-	static const int numRows = 48;
-	static const int numCols = 20;
+	static const int numRows = 20;
+	static const int numCols = 45;
 	int levelData[numRows][numCols] =
 	{
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 }, 
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,6,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },	
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,5,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,1,1,1,1,1,1,1,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,1,1,1,1,1,1,1,2,0,0,1,0,0,0,0,0,0,0,2 },
-
-	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,1,1,0,2 },
-	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2 },
-	{ 1,1,4,1,1,1,1,1,0,0,1,1,0,1,1,1,1,1,1,1 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,2,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-
-	{ 0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,2 },
-	{ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,2 }, 
-	{ 0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,2 },
-	{ 1,1,4,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,2 },
-	{ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,2 },
-	{ 0,0,1,1,0,3,3,0,0,0,0,0,0,0,5,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,2 },
-	{ 0,0,0,0,0,0,0,0,0,3,3,1,0,0,0,0,0,0,0,2 } 
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{0,0,0,0,0,0,0,0,0,0,2,0,0,0,1,0,0,0,0,1,0,0,0,0,0,1,1,1,0,0,0,0,0,0,1,0,1,0,0,0,1,1,1,0,0},
+		{0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0},
+		{0,0,0,0,0,0,0,0,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
+		{0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
+		{0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0},
+		{0,0,0,0,0,1,0,2,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
+		{1,1,1,1,1,1,1,2,1,1,1,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}
 	};
 
 	sf::RectangleShape level[numRows][numCols];
 
-	bool move = true;
-	bool key1 = false;
-
 	Game()
 	{
-		window.create(sf::VideoMode(800, 600), "Endless Runner Game");
+		window.create(sf::VideoMode(800, 600), "Level Editor");
 	}
+
 	void init()
 	{
-		key1 = false;
-		move = true;
-		
+		if (!font.loadFromFile("ASSETS/FONTS/ariblk.ttf"))
+		{
+			std::cout << "Error loading font." << std::endl;
+		}
 
-		floor.loadFromFile("ASSETS\\IMAGES\\floor.png");
-		spike.loadFromFile("ASSETS\\IMAGES\\spike.png");
-		key.loadFromFile("ASSETS\\IMAGES\\key.png");
-		door.loadFromFile("ASSETS\\IMAGES\\door.png");
-		jump.loadFromFile("ASSETS\\IMAGES\\jump.png");
+		//Menu Buttons
+		for (int i = 0; i < 3; i++)
+		{
+			//Rectangle
+			buttons[i].rectangle.setSize(sf::Vector2f(200.0f, 50.0f));
+			buttons[i].rectangle.setOrigin(100.0f, 25.0f);
+			buttons[i].rectangle.setFillColor(sf::Color::White);
+
+			buttons[i].rectangle.setPosition(400.0f, 150.0f + 150.0f * i);
+
+			//Text
+			buttons[i].text.setFont(font);
+			buttons[i].text.setCharacterSize(24.0f);
+			buttons[i].text.setFillColor(sf::Color::White);
+			buttons[i].text.setOutlineThickness(2.0f);
+			buttons[i].text.setOutlineColor(sf::Color::Black);
+
+			if (i == 0)
+			{
+				buttons[i].text.setString("Play");
+			}
+			else if (i == 1)
+			{
+				buttons[i].text.setString("Edit Level");
+			}
+			else if (i == 2)
+			{
+				buttons[i].text.setString("Exit");
+			}
+
+			buttons[i].text.setOrigin(buttons[i].text.getGlobalBounds().width / 2.0f, buttons[i].text.getGlobalBounds().height / 2.0f);
+			buttons[i].text.setPosition(400.0f, 150.0f + 150.0f * i);
+		}
+
+		cursor.setRadius(2.0f);
+		cursor.setOrigin(2.0f, 2.0f);
+		cursor.setFillColor(sf::Color::Red);
+		cursor.setPosition(100.0f, 100.0f);
 
 		view = window.getDefaultView();
 		playerShape.setSize(sf::Vector2f(20, 20));
@@ -124,247 +138,242 @@ public:
 		{
 			for (int col = 0; col < numCols; col++)
 			{
+				level[row][col].setSize(sf::Vector2f(70, 30));
+				level[row][col].setPosition(col * 70, row * 30);
+				level[row][col].setOutlineThickness(2.0f);
+				level[row][col].setOutlineColor(sf::Color::Transparent);
 
 				if (levelData[row][col] == 1)
 				{
-
-					level[row][col].setSize(sf::Vector2f(70, 30));
-					level[row][col].setPosition(row * 70, col * 30);
- 					level[row][col].setTexture(&floor);
+					level[row][col].setFillColor(sf::Color::Red);
 				}
 				if (levelData[row][col] == 0)
 				{
-
-					level[row][col].setSize(sf::Vector2f(70, 30));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setFillColor(sf::Color(50,50,50));
+					level[row][col].setFillColor(sf::Color::Black);
 				}
 				if (levelData[row][col] == 2)
 				{
-					level[row][col].setSize(sf::Vector2f(70, 30));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&spike);
-
-				}
-				if (levelData[row][col] == 3)
-				{
-					level[row][col].setSize(sf::Vector2f(70, 30));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&door);
-				}
-				if (levelData[row][col] == 4)
-				{
-					level[row][col].setSize(sf::Vector2f(70, 100));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&door);
-				}
-				if (levelData[row][col] == 5)
-				{
-					level[row][col].setSize(sf::Vector2f(70, 100));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&jump);
-				}
-				if (levelData[row][col] == 6)
-				{
-					level[row][col].setSize(sf::Vector2f(40, 40));
-					level[row][col].setPosition(row * 70, col * 30);
-					level[row][col].setTexture(&key);
+					level[row][col].setFillColor(sf::Color::Blue);
 				}
 			}
-			std::cout << std::endl;
 		}
-
 	}
+
 	void run()
 	{
-
-
 		sf::Time timePerFrame = sf::seconds(1.0f / 60.0f);
-
-
 		sf::Time timeSinceLastUpdate = sf::Time::Zero;
-
-
 		sf::Clock clock;
-
 		clock.restart();
 
 		while (window.isOpen())
 		{
-			if (move == true)
+			sf::Event event;
+			while (window.pollEvent(event))
 			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+			}
 
-				sf::Event event;
-				while (window.pollEvent(event))
+			timeSinceLastUpdate += clock.restart();
+
+			if (timeSinceLastUpdate > timePerFrame)
+			{
+				switch (m_currentGamestate)
 				{
-					if (event.type == sf::Event::Closed)
-						window.close();
+				case GameState::Menu:
+					updateMenu();
+					renderMenu();
+					break;
+				case GameState::Gameplay:
+					updateGameplay();
+					renderGameplay();
+					break;
+				case GameState::Editor:
+					updateEditor();
+					renderEditor();
+					break;
+				default:
+					break;
 				}
 
+				timeSinceLastUpdate = sf::Time::Zero;
+			}
+		}
+	}
 
-				timeSinceLastUpdate += clock.restart();
+	void updateGameplay()
+	{
+		for (int row = 0; row < numRows; row++)
+		{
+			for (int col = 0; col < numCols; col++)
+			{
+				level[row][col].move(-3.7, 0);
+			}
+		}
 
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && velocityY == 0)
+		{
+			velocityY = -11.8;
+		}
 
-				if (timeSinceLastUpdate > timePerFrame)
+		velocityY = velocityY + gravity;
+		playerShape.move(0, velocityY);
+
+		gravity = 0.6;
+
+		for (int row = 0; row < numRows; row++)
+		{
+			for (int col = 0; col < numCols; col++)
+			{
+				if (velocityY >= 0)
 				{
-
-					for (int row = 0; row < numRows; row++)
+					if (levelData[row][col] == 1)
 					{
-						for (int col = 0; col < numCols; col++)
+
+						if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
 						{
-
-							level[row][col].move(-3.7, 0);
-						}
-
-					}
-
-
-					if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && velocityY == 0)
-					{
-						velocityY = -11.8;
-					}
-
-					velocityY = velocityY + gravity;
-					playerShape.move(0, velocityY);
-
-
-					gravity = 0.6;
-
-					for (int row = 0; row < numRows && move == true; row++)
-					{
-						for (int col = 0; col < numCols; col++)
-						{
-							if (velocityY >= 0)
+							if (playerShape.getPosition().y < level[row][col].getPosition().y)
 							{
-								if (levelData[row][col] == 1)
-								{
-
-									if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-									{
-										if (playerShape.getPosition().y < level[row][col].getPosition().y)
-										{
-											gravity = 0;
-											velocityY = 0;
-											playerShape.setPosition(playerShape.getPosition().x, level[row][col].getPosition().y);
-											playerShape.move(0, -playerShape.getGlobalBounds().height);
-											break;
-										}
-										else {
-											init();
-										}
-									}
-								}
+								gravity = 0;
+								velocityY = 0;
+								playerShape.setPosition(playerShape.getPosition().x, level[row][col].getPosition().y);
+								playerShape.move(0, -playerShape.getGlobalBounds().height);
+								break;
 							}
-							if (velocityY < 0)
-							{
-								if (levelData[row][col] == 1)
-								{
-									if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-									{
-										init();
-									}
-								}
-							}
-							if (levelData[row][col] == 2)
-							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-								{
-									init();
-								}
-							}
-							if (levelData[row][col] == 3)
-							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-								{
-									init();
-									move = false;
-								}
-							}
-							if (levelData[row][col] == 4) 
-							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key1 == true)
-								{
-									level[row][col].setPosition(1000, 1000);
-								}
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()) && key1 == false)
-								{
-									init();
-								}
-							}
-							if (levelData[row][col] == 5)
-							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-								{
-									velocityY = -22.8;
-								}
-							}
-							if (levelData[row][col] == 6)
-							{
-								if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
-								{
-									key1 = true;
-									level[row][col].setPosition(1000, 1000);
-								}
+							else {
+								init();
 							}
 						}
 					}
-					sf::Font m_ArialBlackfont;
-					sf::Text m_winText;
-					if (!m_ArialBlackfont.loadFromFile("ASSETS\\FONTS\\ariblk.ttf"))
-					{
-						std::cout << "problem loading arial black font" << std::endl;
-					}
-					m_winText.setFont(m_ArialBlackfont);
-					m_winText.setString("winner");
-					m_winText.setStyle(sf::Text::Bold);
-					m_winText.setPosition(260.0f, 300.0f);
-					m_winText.setCharacterSize(70U);
-					m_winText.setOutlineColor(sf::Color::Green);
-					m_winText.setFillColor(sf::Color::Red);
-					m_winText.setOutlineThickness(3.0f);
+				}
 
-					if (playerShape.getPosition().y > 600)
+				if (velocityY < 0)
+				{
+					if (levelData[row][col] == 1)
+					{
+						if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
+						{
+							init();
+						}
+					}
+				}
+
+				if (levelData[row][col] == 2)
+				{
+					if (playerShape.getGlobalBounds().intersects(level[row][col].getGlobalBounds()))
 					{
 						init();
 					}
-					window.clear();
+				}
+			}
+		}
 
-					if (move == true)
-					{
-						for (int row = 0; row < numRows; row++)
-						{
-							for (int col = 0; col < numCols; col++)
-							{
-								window.draw(level[row][col]);
-								
-							}
-						}
-					}
-					window.draw(playerShape);
-					if (move == false)
-					{
-						window.draw(m_winText);
-					}
-					window.display();
+		if (playerShape.getPosition().y > 600)
+		{
+			init();
+		}
+	}
 
-					timeSinceLastUpdate = sf::Time::Zero;
+	void renderGameplay()
+	{
+		window.clear();
+
+		for (int row = 0; row < numRows; row++)
+		{
+			for (int col = 0; col < numCols; col++)
+			{
+				level[row][col].setOutlineColor(sf::Color::Transparent);
+				window.draw(level[row][col]);
+			}
+		}
+		window.draw(playerShape);
+
+		window.display();
+	}
+
+	void updateMenu()
+	{
+		cursor.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
+
+		for (size_t i = 0; i < 3; i++)
+		{
+			if (cursor.getGlobalBounds().intersects(buttons[i].rectangle.getGlobalBounds()))
+			{
+				buttons[i].rectangle.setScale(1.1f, 1.1f);
+				buttons[i].text.setScale(1.1f, 1.1f);
+			}
+			else
+			{
+				buttons[i].rectangle.setScale(1.0f, 1.0f);
+				buttons[i].text.setScale(1.0f, 1.0f);
+			}
+		}
+	}
+
+	void renderMenu()
+	{
+		window.clear();
+
+		for (auto& button : buttons)
+		{
+			window.draw(button.rectangle);
+			window.draw(button.text);
+		}
+
+		window.draw(cursor);
+
+		window.display();
+	}
+
+	void updateEditor()
+	{
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			for (int row = 0; row < numRows; row++)
+			{
+				for (int col = 0; col < numCols; col++)
+				{
+					level[row][col].move(-3.7, 0);
+				}
+			}
+		}
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			for (int row = 0; row < numRows; row++)
+			{
+				for (int col = 0; col < numCols; col++)
+				{
+					level[row][col].move(3.7, 0);
 				}
 			}
 		}
 	}
+
+	void renderEditor()
+	{
+		window.clear();
+
+		for (int row = 0; row < numRows; row++)
+		{
+			for (int col = 0; col < numCols; col++)
+			{
+				level[row][col].setOutlineColor(sf::Color::White);
+				window.draw(level[row][col]);
+			}
+		}
+
+		window.display();
+	}
 };
-
-
-
 
 int main()
 {
-
-
 	Game game;
 
-		game.init();
-		game.run();
-	
+	game.init();
+
+	game.run();
+
 	return 0;
 }
