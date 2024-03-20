@@ -1,19 +1,17 @@
-﻿  Game.cpp
-  main.cpp
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(55,46): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(113,37): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(137,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+﻿  main.cpp
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(55,48): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(113,37): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(137,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(186,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(186,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(267,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(273,1): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(290,1): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(365,1): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(518,1): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(528,1): warning C4305: 'argument': truncation from 'double' to 'float'
-  Generating Code...
-  OneButtonPlatformer.vcxproj -> C:\Users\joshb\Desktop\MotionGraphics\lab4\LevelEditor\Debug\OneButtonPlatformer.exe
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(186,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(186,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(267,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(273,17): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(290,13): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(365,20): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(518,28): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\main.cpp(528,27): warning C4305: 'argument': truncation from 'double' to 'float'
+  OneButtonPlatformer.vcxproj -> C:\Users\C00285802\Desktop\MotionGraphics\lab4\LevelEditor\Debug\OneButtonPlatformer.exe

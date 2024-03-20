@@ -43,7 +43,7 @@ public:
 
 	sf::RectangleShape playerShape;
 
-	sf::RectangleShape tilePallet[6];
+	sf::RectangleShape tilePallet[7];
 	int selectedTile = 0;
 
 	Button buttons[3];
@@ -132,7 +132,7 @@ public:
 			buttons[i].text.setPosition(400.0f, 150.0f + 150.0f * i);
 		}
 
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 7; i++)
 		{
 			tilePallet[i].setPosition(sf::Vector2f(i * 70, 0));
 			tilePallet[i].setSize(sf::Vector2f(70, 30));
@@ -454,7 +454,7 @@ public:
 	{
 		cursor.setPosition(static_cast<sf::Vector2f>(sf::Mouse::getPosition(window)));
 		
-			for (size_t i = 0; i < 6; i++) {
+			for (size_t i = 0; i < 7; i++) {
 				if (cursor.getGlobalBounds().intersects(tilePallet[i].getGlobalBounds())) {
 					tilePallet[i].setOutlineColor(sf::Color::Green);
 					{
@@ -547,7 +547,7 @@ public:
 	{
 		window.clear();
 		
-		for (int blockType = 0; blockType < 6; blockType++)
+		for (int blockType = 0; blockType < 7; blockType++)
 		{
 			window.draw(tilePallet[blockType]);
 		}
