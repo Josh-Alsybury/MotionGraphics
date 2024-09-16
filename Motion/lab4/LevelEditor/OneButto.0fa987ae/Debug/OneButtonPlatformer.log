@@ -1,0 +1,19 @@
+﻿  Game.cpp
+  main.cpp
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(55,48): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(113,37): warning C4244: 'argument': conversion from 'float' to 'unsigned int', possible loss of data
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(137,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(137,45): warning C4244:         with
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(137,45): warning C4244:         [
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(137,45): warning C4244:             T=float
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(137,45): warning C4244:         ]
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(186,46): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(186,37): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(267,26): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(273,16): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(290,13): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(365,19): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(518,27): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\main.cpp(528,27): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+  OneButtonPlatformer.vcxproj -> C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Motion\lab4\LevelEditor\Debug\OneButtonPlatformer.exe
