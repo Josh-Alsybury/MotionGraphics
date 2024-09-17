@@ -1,12 +1,7 @@
-/// <summary>
-/// @author Peter Lowe
-/// @date May 2019
-///
-/// you need to change the above lines or lose marks
-/// </summary>
-
 #include "Game.h"
 #include <iostream>
+#include <cstdlib>  
+#include <ctime>
 
 /// <summary>
 /// default constructor
@@ -101,7 +96,8 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-
+	mousePoint();
+	match();
 }
 
 /// <summary>
@@ -120,7 +116,7 @@ void Game::render()
 	{
 		m_window.draw(Walls[WallType]);
 	}
-
+	m_window.draw(mPoint);
 	m_window.display();
 }
 
@@ -146,19 +142,74 @@ void Game::wallsetup()
 
 void Game::blockSetup()
 {
-
+	
+	srand(time(0));
 	for (int i = 0;i < FRUIT; i++)
 	{
-		sf::Vector2f fruitPos = fruits[i].getPosition();
+		int randomNum = rand() % 4 + 1;
+
 		fruits[i].setSize(sf::Vector2f(40, 40));
-		fruits[i].setPosition( 10 * i, fruitPos.y+10);
 		fruits[i].setOutlineThickness(2.0f);
 		fruits[i].setFillColor(sf::Color::Blue);
 
-		if (fruitPos.x >= 300)
+		fruits[i].setPosition(blockx, blocky);
+
+		blockx += 50;
+
+		if (blockx > 460)
 		{
-			fruitPos.x = 10;
-			fruitPos.y = fruitPos.y + 50;
+			blockx = 10;
+			blocky += 50;
+		}
+		if (randomNum == 3)
+		{
+			fruits[i].setFillColor(sf::Color::Green);
+		}
+		if (randomNum == 2)
+		{
+			fruits[i].setFillColor(sf::Color::Cyan);
+		}
+		if (randomNum == 1)
+		{
+			fruits[i].setFillColor(sf::Color::Magenta);
+		}
+       
+	}
+}
+
+void Game::mousePoint()
+{
+	sf::Vector2i mPosition = sf::Mouse::getPosition(m_window);
+
+	mPoint.setFillColor(sf::Color::White);
+	mPoint.setRadius(4.0f);
+	mPoint.setPosition(mPosition.x, mPosition.y);
+}
+
+void Game::match()
+{
+	for (int i = 0; i < FRUIT; i++)
+	{
+
+		if (mPoint.getGlobalBounds().intersects(fruits[i].getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		{
+			if (fruits[i].getFillColor() == sf::Color::Blue)
+			{
+				fruits[i].setOutlineColor(sf::Color::White);
+				std::cout << "Blue" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Green)
+			{
+				std::cout << "Green" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Cyan)
+			{
+				std::cout << "Cyan" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Magenta)
+			{
+				std::cout << "Magenta" << std::endl;
+			}
 		}
 	}
 

@@ -29,13 +29,19 @@ private:
 
 	void wallsetup();
 	void blockSetup();
+	void mousePoint();
+	void match();
 
 	const static int NUM_WALLS = 37;
-	const static int FRUIT = 97;
-	const static int FRUIT_DROP = 50;
+	const static int FRUIT = 100;
 	sf::RectangleShape Walls[NUM_WALLS];
 
 	sf::RectangleShape fruits[FRUIT];
+	float blockx = 10; 
+	float blocky = 10;  
+
+	sf::CircleShape mPoint;
+	
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game
