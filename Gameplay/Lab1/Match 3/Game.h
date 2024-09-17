@@ -31,10 +31,11 @@ private:
 	void blockSetup();
 
 	const static int NUM_WALLS = 37;
+	const static int FRUIT = 97;
+	const static int FRUIT_DROP = 50;
 	sf::RectangleShape Walls[NUM_WALLS];
-	const static int BlOCKS = 192;
-	sf::RectangleShape Blocks[BlOCKS];
 
+	sf::RectangleShape fruits[FRUIT];
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game

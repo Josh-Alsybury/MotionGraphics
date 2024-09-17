@@ -2,15 +2,15 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Gameplay\Lab1\Match 3\Debug\Match 3.exe</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Debug\Match 3.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles>
     <ContentFile>
-      <FullPath>C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Gameplay\Lab1\Match 3\ASSETS\FONTS\ariblk.ttf</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\ASSETS\FONTS\ariblk.ttf</FullPath>
     </ContentFile>
     <ContentFile>
-      <FullPath>C:\Users\Josha\Desktop\MotionGraphics + Gameplay\Gameplay\Lab1\Match 3\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
+      <FullPath>C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\ASSETS\IMAGES\SFML-LOGO.png</FullPath>
     </ContentFile>
   </ContentFiles>
   <SatelliteDlls />

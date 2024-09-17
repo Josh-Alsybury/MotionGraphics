@@ -17,10 +17,11 @@
 /// load and setup thne image
 /// </summary>
 Game::Game() :
-	m_window{ sf::VideoMode{ 800U, 600U, 32U }, "SFML Game" },
+	m_window{ sf::VideoMode{ 510U, 510U, 32U }, "SFML Game" },
 	m_exitGame{false} //when true game will exit
 {
 	wallsetup();
+	
 }
 
 /// <summary>
@@ -102,6 +103,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
+	blockSetup();
 }
 
 /// <summary>
@@ -110,10 +112,17 @@ void Game::update(sf::Time t_deltaTime)
 void Game::render()
 {
 	m_window.clear();
+
+	for (int i=0; i < FRUIT; i++)
+	{
+		m_window.draw(fruits[i]);
+	}
+
 	for (int WallType = 0; WallType < NUM_WALLS; WallType++)
 	{
 		m_window.draw(Walls[WallType]);
 	}
+
 	m_window.display();
 }
 
@@ -139,6 +148,22 @@ void Game::wallsetup()
 
 void Game::blockSetup()
 {
+
+	for (int i = 0;i < FRUIT; i++)
+	{
+		fruits[i].setSize(sf::Vector2f(40, 40));
+		fruits[i].setPosition( 10 * i , 10);
+		fruits[i].setOutlineThickness(2.0f);
+		fruits[i].setFillColor(sf::Color::Blue);
+
+		sf::Vector2f fruitPos = fruits[i].getPosition();
+		if (fruitPos.x >= 600)
+		{
+		fruitPos.x = 10;
+		fruits[i].setPosition(sf::Vector2f(fruitPos.x, 10 + FRUIT_DROP));
+		}
+	}
+
 }
 
 
