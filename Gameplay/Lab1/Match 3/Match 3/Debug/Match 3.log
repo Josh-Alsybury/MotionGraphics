@@ -1,13 +1,13 @@
 ﻿  Game.cpp
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(133,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(133,41): warning C4244:         with
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(133,41): warning C4244:         [
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(133,41): warning C4244:             T=float
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(133,41): warning C4244:         ]
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(143,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(143,41): warning C4244:         with
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(143,41): warning C4244:         [
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(143,41): warning C4244:             T=float
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(143,41): warning C4244:         ]
-C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(155,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(131,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(131,41): warning C4244:         with
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(131,41): warning C4244:         [
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(131,41): warning C4244:             T=float
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(131,41): warning C4244:         ]
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(141,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(141,41): warning C4244:         with
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(141,41): warning C4244:         [
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(141,41): warning C4244:             T=float
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(141,41): warning C4244:         ]
+C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Game.cpp(154,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Match 3.vcxproj -> C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\Lab1\Match 3\Debug\Match 3.exe

@@ -18,22 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Game.h",
-              "DocumentMoniker": "C:\\Users\\gameuser\\Desktop\\MotionGraphics\\Gameplay\\Lab1\\Match 3\\Game.h",
-              "RelativeDocumentMoniker": "Game.h",
-              "ToolTip": "C:\\Users\\gameuser\\Desktop\\MotionGraphics\\Gameplay\\Lab1\\Match 3\\Game.h",
-              "RelativeToolTip": "Game.h",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAABwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-09-17T08:34:51.287Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -42,9 +28,22 @@
               "RelativeDocumentMoniker": "Game.cpp",
               "ToolTip": "C:\\Users\\gameuser\\Desktop\\MotionGraphics\\Gameplay\\Lab1\\Match 3\\Game.cpp",
               "RelativeToolTip": "Game.cpp",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABcAAAABAAAA",
+              "ViewState": "AQIAAIQAAAAAAAAAAAAAAJEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-09-17T08:47:26.966Z",
+              "WhenOpened": "2024-09-17T13:37:20.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Game.h",
+              "DocumentMoniker": "C:\\Users\\gameuser\\Desktop\\MotionGraphics\\Gameplay\\Lab1\\Match 3\\Game.h",
+              "RelativeDocumentMoniker": "Game.h",
+              "ToolTip": "C:\\Users\\gameuser\\Desktop\\MotionGraphics\\Gameplay\\Lab1\\Match 3\\Game.h",
+              "RelativeToolTip": "Game.h",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-17T13:37:18.95Z",
               "EditorCaption": ""
             }
           ]

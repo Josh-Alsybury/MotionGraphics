@@ -8,8 +8,6 @@
 #include "Game.h"
 #include <iostream>
 
-
-
 /// <summary>
 /// default constructor
 /// setup the window properties
@@ -21,7 +19,7 @@ Game::Game() :
 	m_exitGame{false} //when true game will exit
 {
 	wallsetup();
-	
+	blockSetup();
 }
 
 /// <summary>
@@ -103,7 +101,7 @@ void Game::update(sf::Time t_deltaTime)
 	{
 		m_window.close();
 	}
-	blockSetup();
+
 }
 
 /// <summary>
@@ -151,16 +149,16 @@ void Game::blockSetup()
 
 	for (int i = 0;i < FRUIT; i++)
 	{
+		sf::Vector2f fruitPos = fruits[i].getPosition();
 		fruits[i].setSize(sf::Vector2f(40, 40));
-		fruits[i].setPosition( 10 * i , 10);
+		fruits[i].setPosition( 10 * i, fruitPos.y+10);
 		fruits[i].setOutlineThickness(2.0f);
 		fruits[i].setFillColor(sf::Color::Blue);
 
-		sf::Vector2f fruitPos = fruits[i].getPosition();
-		if (fruitPos.x >= 600)
+		if (fruitPos.x >= 300)
 		{
-		fruitPos.x = 10;
-		fruits[i].setPosition(sf::Vector2f(fruitPos.x, 10 + FRUIT_DROP));
+			fruitPos.x = 10;
+			fruitPos.y = fruitPos.y + 50;
 		}
 	}
 
