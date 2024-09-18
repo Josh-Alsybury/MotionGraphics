@@ -41,7 +41,10 @@ private:
 	float blocky = 10;  
 
 	sf::CircleShape mPoint;
-	
+
+	sf::RectangleShape colour1;
+	sf::RectangleShape colour2;
+	sf::RectangleShape colour3;
 
 	sf::RenderWindow m_window; // main SFML window
 	bool m_exitGame; // control exiting game

@@ -1,6 +1,5 @@
 #include "Game.h"
 #include <iostream>
-#include <cstdlib>  
 #include <ctime>
 
 /// <summary>
@@ -107,14 +106,15 @@ void Game::render()
 {
 	m_window.clear();
 
-	for (int i=0; i < FRUIT; i++)
-	{
-		m_window.draw(fruits[i]);
-	}
+
 
 	for (int WallType = 0; WallType < NUM_WALLS; WallType++)
 	{
 		m_window.draw(Walls[WallType]);
+	}
+	for (int i = 0; i < FRUIT; i++)
+	{
+		m_window.draw(fruits[i]);
 	}
 	m_window.draw(mPoint);
 	m_window.display();
@@ -142,7 +142,6 @@ void Game::wallsetup()
 
 void Game::blockSetup()
 {
-	
 	srand(time(0));
 	for (int i = 0;i < FRUIT; i++)
 	{
@@ -195,23 +194,58 @@ void Game::match()
 		{
 			if (fruits[i].getFillColor() == sf::Color::Blue)
 			{
-				fruits[i].setOutlineColor(sf::Color::White);
+				fruits[i].setOutlineColor(sf::Color::Black);
+				colour1.setFillColor(fruits[i].getFillColor());
 				std::cout << "Blue" << std::endl;
 			}
 			if (fruits[i].getFillColor() == sf::Color::Green)
 			{
+				colour1.setFillColor(fruits[i].getFillColor());
 				std::cout << "Green" << std::endl;
 			}
 			if (fruits[i].getFillColor() == sf::Color::Cyan)
 			{
+				colour1.setFillColor(fruits[i].getFillColor());
 				std::cout << "Cyan" << std::endl;
 			}
 			if (fruits[i].getFillColor() == sf::Color::Magenta)
 			{
+				colour1.setFillColor(fruits[i].getFillColor());
 				std::cout << "Magenta" << std::endl;
 			}
 		}
+		if (mPoint.getGlobalBounds().intersects(fruits[i].getGlobalBounds()) && sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		{
+			if (fruits[i].getFillColor() == sf::Color::Blue)
+			{
+				fruits[i].setOutlineColor(sf::Color::Transparent);
+				colour2.setFillColor(fruits[i].getFillColor());
+				std::cout << "Blue" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Green)
+			{
+				colour2.setFillColor(fruits[i].getFillColor());
+				std::cout << "Green" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Cyan)
+			{
+				colour2.setFillColor(fruits[i].getFillColor());
+				std::cout << "Cyan" << std::endl;
+			}
+			if (fruits[i].getFillColor() == sf::Color::Magenta)
+			{
+				colour2.setFillColor(fruits[i].getFillColor());
+				std::cout << "Magenta" << std::endl;
+			}
+			
+		}
+		if (colour1.getFillColor() != colour2.getFillColor())
+		{
+			std::cout << "can swap" << std::endl;
+			
+		}
 	}
+	
 
 }
 
