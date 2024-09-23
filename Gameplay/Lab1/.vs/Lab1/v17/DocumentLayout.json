@@ -1,12 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab1\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8F740FB1-7D52-4D0E-9290-AF663055D31A}|Lab1.vcxproj|C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8F740FB1-7D52-4D0E-9290-AF663055D31A}|Lab1.vcxproj|C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "lab2.cpp",
+              "DocumentMoniker": "C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.cpp",
+              "RelativeDocumentMoniker": "..\\Lab2\\lab2.cpp",
+              "ToolTip": "C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.cpp",
+              "RelativeToolTip": "..\\Lab2\\lab2.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-09-23T17:33:12.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "lab2.h",
+              "DocumentMoniker": "C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.h",
+              "RelativeDocumentMoniker": "..\\Lab2\\lab2.h",
+              "ToolTip": "C:\\Users\\Josha\\Desktop\\College\\MotionGraphics\\Gameplay\\Lab2\\lab2.h",
+              "RelativeToolTip": "..\\Lab2\\lab2.h",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAgwBMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-09-23T17:33:09.432Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
