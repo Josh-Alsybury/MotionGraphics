@@ -1,0 +1,105 @@
+﻿'raylib-quickstart.exe' (Win32): Loaded 'C:\Users\gameuser\Desktop\MotionGraphics\Gameplay\raylib-quickstart\bin\Debug\raylib-quickstart.exe'. Symbols loaded.
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ntdll.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\kernel32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\KernelBase.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\apphelp.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\gdi32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\win32u.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\gdi32full.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\msvcp_win.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ucrtbase.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\user32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\shell32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\winmm.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\msvcrt.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\vcruntime140d.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ucrtbased.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\imm32.dll'. 
+The thread 16664 has exited with code 0 (0x0).
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dinput8.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\advapi32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\sechost.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\rpcrt4.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\bcrypt.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\XInput1_4.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\combase.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\cfgmgr32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\devobj.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\InputHost.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\CoreMessaging.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\SHCore.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ws2_32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\oleaut32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\propsys.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\WinTypes.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\CoreUIComponents.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\bcryptprimitives.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ntmarta.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\kernel.appcore.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\kernel.appcore.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\kernel.appcore.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dwmapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\uxtheme.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\msctf.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\hid.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\setupapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\wintrust.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\crypt32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\msasn1.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\opengl32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\glu32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\clbcatq.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\AppXDeploymentClient.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\AppXDeploymentClient.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvdw.inf_amd64_df7d38d923ade95b\nvoglv64.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\ole32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\wtsapi32.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\version.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\cryptnet.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\cryptbase.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\wldp.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\drvstore.dll'. 
+The thread 6156 has exited with code 0 (0x0).
+The thread 20924 has exited with code 0 (0x0).
+The thread 21144 has exited with code 0 (0x0).
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\imagehlp.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\cryptsp.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\rsaenh.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\DriverStore\FileRepository\nvdw.inf_amd64_df7d38d923ade95b\nvgpucomp64.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\windows.storage.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\shlwapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\DXCore.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\psapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dbghelp.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\psapi.dll'
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\dbghelp.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\psapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dbghelp.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\psapi.dll'
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\dbghelp.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\psapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dbghelp.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\psapi.dll'
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\dbghelp.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\psapi.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\dbghelp.dll'. 
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\psapi.dll'
+'raylib-quickstart.exe' (Win32): Unloaded 'C:\Windows\System32\dbghelp.dll'
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\powrprof.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\umpdc.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\winsta.dll'. 
+'raylib-quickstart.exe' (Win32): Loaded 'C:\Windows\System32\TextInputFramework.dll'. 
+The thread 18644 has exited with code 0 (0x0).
+The thread 11248 has exited with code 0 (0x0).
+The thread 3004 has exited with code 0 (0x0).
+The thread 21212 has exited with code 0 (0x0).
+The thread 9128 has exited with code 0 (0x0).
+The thread 19800 has exited with code 0 (0x0).
+The thread 12624 has exited with code 0 (0x0).
+The thread 22224 has exited with code 0 (0x0).
+The thread 18708 has exited with code 0 (0x0).
+The thread 21060 has exited with code 0 (0x0).
+The thread 21304 has exited with code 0 (0x0).
+The thread 21272 has exited with code 0 (0x0).
+The thread 19640 has exited with code 0 (0x0).
+The program '[17616] raylib-quickstart.exe' has exited with code 0 (0x0).
