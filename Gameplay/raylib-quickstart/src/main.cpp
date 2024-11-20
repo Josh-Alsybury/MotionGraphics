@@ -1,6 +1,5 @@
 #include "raylib.h"
-#define RAYGUI_IMPLEMENTATION
-#include "raygui.h"
+#include <cmath>
 
 #define MAX_RECTS 50
 
@@ -18,7 +17,7 @@ int Clamp(int value, int min, int max)
     return value;
 }
 
-void setBackGround(Rect& Shape, int x,int y)
+void setBackGround(Rect& Shape, int x, int y)
 {
     if (x % 2) {
         if (y % 2)
@@ -41,58 +40,86 @@ void setBackGround(Rect& Shape, int x,int y)
             Shape.color = LIGHTGRAY;
         }
     }
+}
 
+// Convert HSV to RGB
+Color HSVToRGB(float hue, float saturation, float value) {
+    float c = value * saturation;
+    float x = c * (1 - fabsf(fmodf(hue / 60.0f, 2) - 1));
+    float m = value - c;
+
+    float r = 0, g = 0, b = 0;
+    if (hue >= 0 && hue < 60) { r = c; g = x; b = 0; }
+    else if (hue >= 60 && hue < 120) { r = x; g = c; b = 0; }
+    else if (hue >= 120 && hue < 180) { r = 0; g = c; b = x; }
+    else if (hue >= 180 && hue < 240) { r = 0; g = x; b = c; }
+    else if (hue >= 240 && hue < 300) { r = x; g = 0; b = c; }
+    else if (hue >= 300 && hue < 360) { r = c; g = 0; b = x; }
+
+    return Color{ (unsigned char)((r + m) * 255), (unsigned char)((g + m) * 255), (unsigned char)((b + m) * 255), 255 };
 }
 
 int main() {
     // Initialization
     const int screenWidth = 800;
     const int screenHeight = 600;
-    InitWindow(screenWidth, screenHeight, "Simple Drawing Package - Rectangle Mode");
+    InitWindow(screenWidth, screenHeight, "Simple Drawing Package with Color Picker");
 
-    // Variables
     Rect rectangles[MAX_RECTS][MAX_RECTS];
     int RectSize = 10;
-    Color currentColor = WHITE;  // Default color for drawing rectangles
-    bool drawing = false;
+    Color currentColor = WHITE;
 
-    // Define a simple color palette
-    Color palette[] = { BLACK, RED, GREEN, BLUE, YELLOW, ORANGE, PURPLE, MAROON, PINK, };
-    int paletteSize = sizeof(palette) / sizeof(palette[0]);
-    int selectedColor = 0;
-
-    SetTargetFPS(60);
-    
-    for(int x = 0;x < MAX_RECTS;x++) 
-    {
-        for (int y = 0; y < MAX_RECTS; y++)
-        {
-            Vector2 rectEnd = GetMousePosition();
-            rectangles[x][y].position.x = (RectSize*x) +200 ;
-            rectangles[x][y].position.y = RectSize*y;
+    // Initialize the grid
+    for (int x = 0; x < MAX_RECTS; x++) {
+        for (int y = 0; y < MAX_RECTS; y++) {
+            rectangles[x][y].position.x = (RectSize * x) + 200;
+            rectangles[x][y].position.y = RectSize * y;
             rectangles[x][y].width = 10;
             rectangles[x][y].height = 10;
             setBackGround(rectangles[x][y], x, y);
-
         }
     }
 
-    // Main game loop
+    // Variables for the color picker
+    Vector2 pickerCenter = { 80, 50 }; 
+    float pickerRadius = 50;            
+    float innerRadius = 20;             
+    float hue = 0.0f, saturation = 1.0f;
+    float value = 1.0f;                  
+
+    SetTargetFPS(60);
+
     while (!WindowShouldClose()) {
         // Update
-        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) 
-        {
+        Vector2 mousePos = GetMousePosition();
+
+        // Check for clicks in the color picker
+        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+            float dx = mousePos.x - pickerCenter.x;
+            float dy = mousePos.y - pickerCenter.y;
+            float distance = sqrtf(dx * dx + dy * dy);
+
+            if (distance <= pickerRadius && distance >= innerRadius) {
+                // Calculate angle for hue
+                float angle = atan2f(dy, dx) * (180.0f / PI);
+                if (angle < 0) angle += 360.0f;
+
+                hue = angle;  // Set hue based on angle
+                saturation = (distance - innerRadius) / (pickerRadius - innerRadius);  // Set saturation based on radius
+                currentColor = HSVToRGB(hue, saturation, value);
+            }
+        }
+
+        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
             Vector2 mousePos = GetMousePosition();
             int GridX = (mousePos.x - 200) / RectSize;
             int GridY = mousePos.y / RectSize;
             GridX = Clamp(GridX, 0, MAX_RECTS - 1);
             GridY = Clamp(GridY, 0, MAX_RECTS - 1);
             rectangles[GridX][GridY].color = currentColor;
-        
         }
 
-        if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON))
-        {
+        if (IsMouseButtonDown(MOUSE_RIGHT_BUTTON)) {
             Vector2 mousePos = GetMousePosition();
             int GridX = (mousePos.x - 200) / RectSize;
             int GridY = mousePos.y / RectSize;
@@ -100,50 +127,35 @@ int main() {
             GridY = Clamp(GridY, 0, MAX_RECTS - 1);
             setBackGround(rectangles[GridX][GridY], GridX, GridY);
         }
-        
 
-        // Change color based on palette selection
-        for (int i = 0; i < paletteSize; i++) {
-            Rectangle colorButton = { 10 + 40 * i, screenHeight - 40, 30, 30 };
-            if (GuiButton(colorButton, "")) {
-                currentColor = palette[i];
-                selectedColor = i;
-            }
-        }
-
-        // Draw
+      
         BeginDrawing();
         ClearBackground(RAYWHITE);
 
-        // Draw the palette buttons
-        for (int i = 0; i < paletteSize; i++) {
-            Rectangle colorButton = { 10 + 40 * i, screenHeight - 40, 30, 30 };
-            DrawRectangleRec(colorButton, palette[i]);
-            if (i == selectedColor) {
-                DrawRectangleLinesEx(colorButton, 2, BLACK);  // Highlight selected color
-            }
+        
+        for (int i = 0; i < 360; i += 1) {
+            Color arcColor = HSVToRGB(i, 1.0f, 1.0f);
+            DrawCircleSector(pickerCenter, pickerRadius, i, i + 1, 100, arcColor);
         }
 
-        // Draw all stored rectangles
-        for (int x = 0; x < MAX_RECTS; x++) 
-        {
-            for (int y = 0; y < MAX_RECTS; y++)
-            {
+      
+        DrawCircle(pickerCenter.x, pickerCenter.y, innerRadius, BLACK);
+        DrawCircle(pickerCenter.x, pickerCenter.y, innerRadius - 1, WHITE);
+
+       
+        for (int x = 0; x < MAX_RECTS; x++) {
+            for (int y = 0; y < MAX_RECTS; y++) {
                 DrawRectangleRec({ rectangles[x][y].position.x, rectangles[x][y].position.y, rectangles[x][y].width, rectangles[x][y].height }, rectangles[x][y].color);
             }
         }
 
-       
-
-
-        // Draw the current rectangle if drawing
-
+        
+        DrawRectangle(40, 100, 80, 20, currentColor);
+        DrawRectangleLines(40, 100, 80, 20, BLACK);
 
         EndDrawing();
     }
 
-    // De-Initialization
     CloseWindow();
-
     return 0;
 }
