@@ -42,7 +42,7 @@ void setBackGround(Rect& Shape, int x, int y)
     }
 }
 
-// Convert HSV to RGB
+
 Color HSVToRGB(float hue, float saturation, float value) {
     float c = value * saturation;
     float x = c * (1 - fabsf(fmodf(hue / 60.0f, 2) - 1));
@@ -60,7 +60,7 @@ Color HSVToRGB(float hue, float saturation, float value) {
 }
 
 int main() {
-    // Initialization
+   
     const int screenWidth = 800;
     const int screenHeight = 600;
     InitWindow(screenWidth, screenHeight, "Simple Drawing Package with Color Picker");
@@ -68,6 +68,7 @@ int main() {
     Rect rectangles[MAX_RECTS][MAX_RECTS];
     int RectSize = 10;
     Color currentColor = WHITE;
+    bool eyedropperActive = false;
 
     // Initialize the grid
     for (int x = 0; x < MAX_RECTS; x++) {
@@ -80,7 +81,7 @@ int main() {
         }
     }
 
-    // Variables for the color picker
+    
     Vector2 pickerCenter = { 80, 50 }; 
     float pickerRadius = 50;            
     float innerRadius = 20;             
@@ -93,25 +94,52 @@ int main() {
         // Update
         Vector2 mousePos = GetMousePosition();
 
-        // Check for clicks in the color picker
+        Rectangle eyedropperButtonBounds = { 40, 160, 80, 30 };
+        if (!eyedropperActive && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, eyedropperButtonBounds)) {
+            eyedropperActive = true;
+        }
+
+        if (eyedropperActive && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            
+            int GridX = (mousePos.x - 200) / RectSize;
+            int GridY = mousePos.y / RectSize;
+
+            if (GridX >= 0 && GridX < MAX_RECTS && GridY >= 0 && GridY < MAX_RECTS) {
+                GridX = Clamp(GridX, 0, MAX_RECTS - 1);
+                GridY = Clamp(GridY, 0, MAX_RECTS - 1);
+
+                currentColor = rectangles[GridX][GridY].color;
+                eyedropperActive = false;
+            }
+        }
+        
         if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
             float dx = mousePos.x - pickerCenter.x;
             float dy = mousePos.y - pickerCenter.y;
             float distance = sqrtf(dx * dx + dy * dy);
 
             if (distance <= pickerRadius && distance >= innerRadius) {
-                // Calculate angle for hue
+                
                 float angle = atan2f(dy, dx) * (180.0f / PI);
                 if (angle < 0) angle += 360.0f;
 
-                hue = angle;  // Set hue based on angle
-                saturation = (distance - innerRadius) / (pickerRadius - innerRadius);  // Set saturation based on radius
+                hue = angle;  
+                saturation = (distance - innerRadius) / (pickerRadius - innerRadius);  
                 currentColor = HSVToRGB(hue, saturation, value);
             }
         }
-
-        if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-            Vector2 mousePos = GetMousePosition();
+        
+       // if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+        //    Vector2 mousePos = GetMousePosition();
+       //     int GridX = (mousePos.x - 200) / RectSize;
+       //     int GridY = mousePos.y / RectSize;
+       //     GridX = Clamp(GridX, 0, MAX_RECTS - 1);
+       //     GridY = Clamp(GridY, 0, MAX_RECTS - 1);
+       //     rectangles[GridX][GridY].color = currentColor;
+       // }
+        
+        // Drawing grid logic
+        if (!eyedropperActive && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
             int GridX = (mousePos.x - 200) / RectSize;
             int GridY = mousePos.y / RectSize;
             GridX = Clamp(GridX, 0, MAX_RECTS - 1);
@@ -149,6 +177,14 @@ int main() {
             }
         }
 
+        DrawRectangleRec(eyedropperButtonBounds, LIGHTGRAY);
+        DrawRectangleLinesEx(eyedropperButtonBounds, 2, BLACK);
+        DrawText("Eyedropper", eyedropperButtonBounds.x + 5, eyedropperButtonBounds.y + 7, 10, BLACK);
+
+       
+        if (eyedropperActive) {
+            DrawText("Eyedropper Active: Click a square to select its color", 200, 580, 20, RED);
+        }
         
         DrawRectangle(40, 100, 80, 20, currentColor);
         DrawRectangleLines(40, 100, 80, 20, BLACK);
