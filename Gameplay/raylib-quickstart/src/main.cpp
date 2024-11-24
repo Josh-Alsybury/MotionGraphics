@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include <cmath>
 #include <vector>
+#include <cstdio>
 
 #define MAX_RECTS 50
 
@@ -57,6 +58,43 @@ Color HSVToRGB(float hue, float saturation, float value) {
     else if (hue >= 300 && hue < 360) { r = c; g = 0; b = x; }
 
     return Color{ (unsigned char)((r + m) * 255), (unsigned char)((g + m) * 255), (unsigned char)((b + m) * 255), 255 };
+}
+
+void SaveCanvas(Rect rectangles[MAX_RECTS][MAX_RECTS], int rectSize, const char* filename) {
+    Image canvas = GenImageColor(MAX_RECTS * rectSize, MAX_RECTS * rectSize, BLANK);
+    for (int x = 0; x < MAX_RECTS; x++) {
+        for (int y = 0; y < MAX_RECTS; y++) {
+            Color color = rectangles[x][y].color;
+            for (int i = 0; i < rectSize; i++) {
+                for (int j = 0; j < rectSize; j++) {
+                    ImageDrawPixel(&canvas, x * rectSize + i, y * rectSize + j, color);
+                }
+            }
+        }
+    }
+    ExportImage(canvas, filename);  
+    UnloadImage(canvas);  
+}
+
+void LoadCanvas(Rect rectangles[MAX_RECTS][MAX_RECTS], int rectSize, const char* filename) {
+    Image canvas = LoadImage(filename);  // Load the image
+    if (canvas.width != MAX_RECTS * rectSize || canvas.height != MAX_RECTS * rectSize) {
+        printf("Error: Image size does not match canvas size.\n");
+        UnloadImage(canvas);
+        return;
+    }
+
+    ImageFormat(&canvas, PIXELFORMAT_UNCOMPRESSED_R8G8B8A8);  
+    Color* pixels = LoadImageColors(canvas);
+    for (int x = 0; x < MAX_RECTS; x++) {
+        for (int y = 0; y < MAX_RECTS; y++) {
+            int px = x * rectSize;
+            int py = y * rectSize;
+            rectangles[x][y].color = pixels[py * canvas.width + px];
+        }
+    }
+    UnloadImageColors(pixels);
+    UnloadImage(canvas); 
 }
 
 int main()
@@ -242,6 +280,17 @@ int main()
             }
         }
 
+        Rectangle saveButtonBounds = { 40, 280, 80, 30 };
+       
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, saveButtonBounds)) {
+            SaveCanvas(rectangles, RectSize, "saved_canvas.png");
+        }
+
+        Rectangle loadButtonBounds = { 40, 320, 80, 30 };
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, loadButtonBounds)) {
+            LoadCanvas(rectangles, RectSize, "saved_canvas.png");
+        }
+
         // Drawing
         BeginDrawing();
         ClearBackground(RAYWHITE);
@@ -292,6 +341,16 @@ int main()
         DrawRectangleLinesEx(eraseButtonBounds, 2, BLACK);
         DrawText("Erase", eraseButtonBounds.x + 15, eraseButtonBounds.y + 7, 10, BLACK);
 
+        DrawRectangleRec(saveButtonBounds, LIGHTGRAY);
+        DrawRectangleLinesEx(saveButtonBounds, 2, BLACK);
+        DrawText("Save", saveButtonBounds.x + 20, saveButtonBounds.y + 7, 10, BLACK);
+
+        // Draw Load Button
+        DrawRectangleRec(loadButtonBounds, LIGHTGRAY);
+        DrawRectangleLinesEx(loadButtonBounds, 2, BLACK);
+        DrawText("Load", loadButtonBounds.x + 20, loadButtonBounds.y + 7, 10, BLACK);
+
+
 
         if (eyedropperActive) {
             DrawText("Eyedropper Active: Click a square to select its color", 200, 580, 20, RED);
@@ -303,7 +362,7 @@ int main()
         }
 
         if (eraseActive) {
-            DrawText("Erase Mode: Right-click to erase squares", 200, 580, 20, RED);
+            DrawText("Erase Mode: Left-click or hold to erase squares", 200, 580, 20, RED);
         }
 
        // if (CheckCollisionPointRec(mousePos, eraseButtonBounds)) {
