@@ -106,18 +106,18 @@ int main()
     Rect rectangles[MAX_RECTS][MAX_RECTS];
     int RectSize = 10;
     Color currentColor = WHITE;
-    bool eyedropperActive = false;
 
+    bool eyedropperActive = false;
     bool copyMode = false;
     bool copyPasteActive = false; 
     bool selectionActive = false;
+    bool clearallActive = false;
+    bool eraseActive = false;
+
     Vector2 selectionStart = { -1, -1 };
     Vector2 selectionEnd = { -1, -1 };
     Color clipboard[MAX_RECTS][MAX_RECTS] = { 0 };
 
-    bool eraseActive = false;
-
-    
     for (int x = 0; x < MAX_RECTS; x++) {
         for (int y = 0; y < MAX_RECTS; y++) {
             rectangles[x][y].position.x = (RectSize * x) + 200;
@@ -154,7 +154,6 @@ int main()
             }
         }
 
-     
         Rectangle copyPasteButtonBounds = { 40, 200, 80, 30 };
         if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, copyPasteButtonBounds)) {
             eraseActive = false;
@@ -172,7 +171,24 @@ int main()
             }
         }
 
-      
+        Rectangle ClearAllButtonBounds = { 40, 360, 80, 30 };
+        if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, ClearAllButtonBounds)) {
+            clearallActive = !clearallActive;
+            if (clearallActive) {
+                 eyedropperActive = false;
+                 copyPasteActive = false;
+            }
+        }
+
+        if (clearallActive && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+            int GridX = (mousePos.x - 200) / RectSize;
+            int GridY = mousePos.y / RectSize;
+
+            if (GridX >= 0 && GridX < MAX_RECTS && GridY >= 0 && GridY < MAX_RECTS) {
+                setBackGround(rectangles[GridX][GridY], GridX, GridY);
+            }
+        }
+
         if (copyPasteActive && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
             selectionStart.x = (mousePos.x - 200) / RectSize;
             selectionStart.y = mousePos.y / RectSize;
@@ -181,7 +197,6 @@ int main()
             selectionActive = true;
         }
 
-        
         if (copyPasteActive && selectionActive && IsMouseButtonReleased(MOUSE_LEFT_BUTTON)) {
             selectionEnd.x = (mousePos.x - 200) / RectSize;
             selectionEnd.y = mousePos.y / RectSize;
@@ -203,7 +218,6 @@ int main()
             selectionActive = false;
         }
 
-        
         if (copyPasteActive && IsMouseButtonPressed(MOUSE_RIGHT_BUTTON)) {
             int pasteX = (mousePos.x - 200) / RectSize;
             int pasteY = mousePos.y / RectSize;
@@ -228,7 +242,6 @@ int main()
             }
         }
 
-        
         Rectangle eyedropperButtonBounds = { 40, 160, 80, 30 };
         if (!eyedropperActive && !copyPasteActive && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && CheckCollisionPointRec(mousePos, eyedropperButtonBounds)) {
             eyedropperActive = true;
@@ -247,7 +260,6 @@ int main()
             }
         }
 
-        
         if (!eraseActive && !eyedropperActive && !copyPasteActive && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
             int GridX = (mousePos.x - 200) / RectSize;
             int GridY = mousePos.y / RectSize;
@@ -264,8 +276,15 @@ int main()
             setBackGround(rectangles[GridX][GridY], GridX, GridY);
         }
 
+        if (clearallActive && !eraseActive && !eyedropperActive && !copyPasteActive && IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+            for (int x = 0; x < MAX_RECTS; x++) {
+                for (int y = 0; y < MAX_RECTS; y++) {
+                    setBackGround(rectangles[x][y], x, y);
+                }
+            }
+            clearallActive = false;
+        }
 
-       
         if (!eraseActive && !eyedropperActive && !copyPasteActive) {
             if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
                 float dx = mousePos.x - pickerCenter.x;
@@ -326,13 +345,10 @@ int main()
             }
         }
 
-
-        
         DrawRectangleRec(eyedropperButtonBounds, LIGHTGRAY);
         DrawRectangleLinesEx(eyedropperButtonBounds, 2, BLACK);
         DrawText("Eyedropper", eyedropperButtonBounds.x + 5, eyedropperButtonBounds.y + 7, 10, BLACK);
 
-       
         DrawRectangleRec(copyPasteButtonBounds, LIGHTGRAY);
         DrawRectangleLinesEx(copyPasteButtonBounds, 2, BLACK);
         DrawText("Copy/Paste", copyPasteButtonBounds.x + 5, copyPasteButtonBounds.y + 7, 10, BLACK);
@@ -345,12 +361,13 @@ int main()
         DrawRectangleLinesEx(saveButtonBounds, 2, BLACK);
         DrawText("Save", saveButtonBounds.x + 20, saveButtonBounds.y + 7, 10, BLACK);
 
-        // Draw Load Button
         DrawRectangleRec(loadButtonBounds, LIGHTGRAY);
         DrawRectangleLinesEx(loadButtonBounds, 2, BLACK);
         DrawText("Load", loadButtonBounds.x + 20, loadButtonBounds.y + 7, 10, BLACK);
 
-
+        DrawRectangleRec(ClearAllButtonBounds, LIGHTGRAY);
+        DrawRectangleLinesEx(ClearAllButtonBounds, 2, BLACK);
+        DrawText("Clear All", ClearAllButtonBounds.x + 15, ClearAllButtonBounds.y + 7, 10, BLACK);
 
         if (eyedropperActive) {
             DrawText("Eyedropper Active: Click a square to select its color", 200, 580, 20, RED);
@@ -366,19 +383,22 @@ int main()
         }
 
         if (CheckCollisionPointRec(mousePos, eraseButtonBounds)) {
-            DrawRectangleLinesEx(eraseButtonBounds, 2, RED);  // Highlight button
+            DrawRectangleLinesEx(eraseButtonBounds, 2, RED);  
         }
         if (CheckCollisionPointRec(mousePos, eyedropperButtonBounds)) {
-            DrawRectangleLinesEx(eyedropperButtonBounds, 2, PINK);  // Highlight button
+            DrawRectangleLinesEx(eyedropperButtonBounds, 2, PINK);  
         }
         if (CheckCollisionPointRec(mousePos, saveButtonBounds)) {
-            DrawRectangleLinesEx(saveButtonBounds, 2, DARKGREEN);  // Highlight button
+            DrawRectangleLinesEx(saveButtonBounds, 2, DARKGREEN);  
         }
         if (CheckCollisionPointRec(mousePos, loadButtonBounds)) {
-            DrawRectangleLinesEx(loadButtonBounds, 2, DARKBLUE);  // Highlight button
+            DrawRectangleLinesEx(loadButtonBounds, 2, DARKBLUE);  
         }
         if (CheckCollisionPointRec(mousePos, copyPasteButtonBounds)) {
-            DrawRectangleLinesEx(copyPasteButtonBounds, 2, currentColor);  // Highlight button
+            DrawRectangleLinesEx(copyPasteButtonBounds, 2, currentColor);  
+        }
+        if (CheckCollisionPointRec(mousePos, ClearAllButtonBounds)) {
+            DrawRectangleLinesEx(ClearAllButtonBounds, 2, GOLD);
         }
 
         DrawRectangle(40, 100, 80, 20, currentColor);
