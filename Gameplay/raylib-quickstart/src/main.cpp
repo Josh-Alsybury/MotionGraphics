@@ -365,9 +365,21 @@ int main()
             DrawText("Erase Mode: Left-click or hold to erase squares", 200, 580, 20, RED);
         }
 
-       // if (CheckCollisionPointRec(mousePos, eraseButtonBounds)) {
-        //    DrawRectangleRec(eraseButtonBounds, RED);  // Highlight button
-        //}
+        if (CheckCollisionPointRec(mousePos, eraseButtonBounds)) {
+            DrawRectangleLinesEx(eraseButtonBounds, 2, RED);  // Highlight button
+        }
+        if (CheckCollisionPointRec(mousePos, eyedropperButtonBounds)) {
+            DrawRectangleLinesEx(eyedropperButtonBounds, 2, PINK);  // Highlight button
+        }
+        if (CheckCollisionPointRec(mousePos, saveButtonBounds)) {
+            DrawRectangleLinesEx(saveButtonBounds, 2, DARKGREEN);  // Highlight button
+        }
+        if (CheckCollisionPointRec(mousePos, loadButtonBounds)) {
+            DrawRectangleLinesEx(loadButtonBounds, 2, DARKBLUE);  // Highlight button
+        }
+        if (CheckCollisionPointRec(mousePos, copyPasteButtonBounds)) {
+            DrawRectangleLinesEx(copyPasteButtonBounds, 2, currentColor);  // Highlight button
+        }
 
         DrawRectangle(40, 100, 80, 20, currentColor);
         DrawRectangleLines(40, 100, 80, 20, BLACK);
